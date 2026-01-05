@@ -88,7 +88,7 @@ class Message
             return;
         }
 
-        $segments = preg_split("/[\n\r" . $this->segmentSeparator . ']/', $msgStr, -1, PREG_SPLIT_NO_EMPTY);
+        $segments = preg_split("/[" . $this->segmentSeparator . ']/', $msgStr, -1, PREG_SPLIT_NO_EMPTY);
         $this->setSeparators($segments[0]); // First segment is MSH, the control segment
 
         // Do all segments
