@@ -67,7 +67,7 @@ class Message
         ?bool $doNotSplitRepetition = null
     ) {
         // Control characters and other HL7 properties
-        $this->segmentSeparator = $hl7Globals['SEGMENT_SEPARATOR'] ?? '\n';
+        $this->segmentSeparator = $hl7Globals['SEGMENT_SEPARATOR'] ?? '\r';
         $this->withSegmentEndingFieldSeparator =
             $hl7Globals['WITH_SEGMENT_ENDING_FIELD_SEPARATOR'] ?? $hl7Globals['SEGMENT_ENDING_BAR'] ?? true;
         $this->fieldSeparator = $hl7Globals['FIELD_SEPARATOR'] ?? '|';

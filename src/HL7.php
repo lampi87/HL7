@@ -203,7 +203,7 @@ class HL7
 
     private function setDefaults(): void
     {
-        $this->hl7Globals['SEGMENT_SEPARATOR'] = '\n';
+        $this->hl7Globals['SEGMENT_SEPARATOR'] = '\r';
         $this->hl7Globals['WITH_SEGMENT_ENDING_FIELD_SEPARATOR'] = true;
         $this->hl7Globals['FIELD_SEPARATOR'] = '|';
         $this->hl7Globals['COMPONENT_SEPARATOR'] = '^';
