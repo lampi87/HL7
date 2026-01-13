@@ -117,12 +117,13 @@ class Connection
     /**
      * Sends a Message object over this connection.
      *
+     * @param array|null $hl7Globals Set control characters or HL7 properties. e.g., ['HL7_VERSION' => '2.5']
      * @param  string  $responseCharEncoding  The expected character encoding of the response.
      * @param  bool  $noWait  Do no wait for ACK. Helpful for building load testing tools...
      * @throws HL7ConnectionException
      * @throws HL7Exception
      */
-    public function send(Message $msg, string $responseCharEncoding = 'UTF-8', bool $noWait = false): ?Message
+    public function send(Message $msg, ?array $hl7Globals = null, string $responseCharEncoding = 'UTF-8', bool $noWait = false): ?Message
     {
         $message = $this->MESSAGE_PREFIX . $msg->toString(true) . $this->MESSAGE_SUFFIX; // As per MLLP protocol
         if (!socket_write($this->socket, $message, strlen($message))) {
@@ -159,7 +160,7 @@ class Connection
         // set character encoding
         $data = mb_convert_encoding($data, $responseCharEncoding);
 
-        return new Message($data, null, true, true);
+        return new Message($data, $hl7Globals, true, true);
     }
 
     /*
