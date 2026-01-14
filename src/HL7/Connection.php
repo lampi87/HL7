@@ -175,17 +175,12 @@ class Connection
      * Close the socket
      * TODO: Close only when the socket is open
      */
-    private function close(): void
+    public function close(): void
     {
         try {
             socket_close($this->socket);
         } catch (Exception $e) {
             echo 'Failed to close socket: ' . socket_strerror(socket_last_error()) . PHP_EOL;
         }
-    }
-
-    public function __destruct()
-    {
-        $this->close();
     }
 }
